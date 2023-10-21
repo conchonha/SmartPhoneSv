@@ -34,7 +34,7 @@ import javax.inject.Singleton;
     public Retrofit providerRetrofit(OkHttpClient okHttpClient){
         return new Retrofit
                 .Builder()
-                .baseUrl("https://localhost:8112/core/api/v1/")
+                .baseUrl("http://192.168.1.9:8112/core/api/v1/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(okHttpClient)
                 .build();

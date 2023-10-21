@@ -46,14 +46,14 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
     public void callAPI(){
-        client.login(new LoginBody("123456", "xuanqn01@gmail.com")).enqueue(new Callback<List<LoginAccountRespose>>() {
+        client.login(new LoginBody("123456", "xuanqn01@gmail.com")).enqueue(new Callback<LoginAccountRespose>() {
             @Override
-            public void onResponse(Call<List<LoginAccountRespose>> call, Response<List<LoginAccountRespose>> response) {
+            public void onResponse(Call<LoginAccountRespose> call, Response<LoginAccountRespose> response) {
                 Toast.makeText(LoginActivity.this, "Thanh cong", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }
             @Override
-            public void onFailure(Call<List<LoginAccountRespose>> call, Throwable t) {
+            public void onFailure(Call<LoginAccountRespose> call, Throwable t) {
                 Log.e("Retrofit", "Failed to make API call", t);
                 Toast.makeText(LoginActivity.this, "onFailure", Toast.LENGTH_SHORT).show();
             }
