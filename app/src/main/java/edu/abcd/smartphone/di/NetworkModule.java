@@ -11,6 +11,8 @@ import dagger.Provides;
 import dagger.hilt.InstallIn;
 import dagger.hilt.components.SingletonComponent;
 import edu.abcd.smartphone.data_source.remote.DataServiceClient;
+import edu.abcd.smartphone.data_source.remote.body.LoginBody;
+import edu.abcd.smartphone.data_source.remote.response.LoginAccountRespose;
 import okhttp3.OkHttpClient;
 import okhttp3.Protocol;
 import retrofit2.Retrofit;
@@ -34,7 +36,7 @@ import javax.inject.Singleton;
     public Retrofit providerRetrofit(OkHttpClient okHttpClient){
         return new Retrofit
                 .Builder()
-                .baseUrl("http://192.168.1.9:8112/core/api/v1/")
+                .baseUrl("http://192.168.1.9:8112/core/api/v1/") //Đổi đc ipconfig: 192.168.1.9, chạy "java -jar" tại terminal
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(okHttpClient)
                 .build();
