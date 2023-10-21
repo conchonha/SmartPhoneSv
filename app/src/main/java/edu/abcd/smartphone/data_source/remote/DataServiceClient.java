@@ -21,5 +21,5 @@ public interface DataServiceClient {
     Call<RegisterAccountResponse> register(@Body RegisterBody registerBody);
 
     @POST("auth/login")
-    Call<List<LoginAccountRespose>> login(@Body LoginBody loginBody);
+    Call<LoginAccountRespose> login(@Body LoginBody loginBody);
 }

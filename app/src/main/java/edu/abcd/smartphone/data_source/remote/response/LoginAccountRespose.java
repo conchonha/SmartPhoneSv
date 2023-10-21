@@ -19,4 +19,12 @@ public class LoginAccountRespose {
     public String image;
     @SerializedName("role")
     public String role;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
