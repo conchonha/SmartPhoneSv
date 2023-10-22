@@ -46,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
     public void initViewModel(String pass, String username) {
         if (checkIsEmpty(pass, username)) {
             LoginViewModel loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+            loginViewModel.loginAPI(pass, username);
             loginViewModel.getLiveData().observe(this, new Observer<LoginAccountRespose>() {
                 @Override
                 public void onChanged(LoginAccountRespose loginAccountRespose) {
@@ -57,7 +58,6 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }
             });
-            loginViewModel.loginAPI(pass, username);
         }
     }
 

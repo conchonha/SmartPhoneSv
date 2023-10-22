@@ -4,12 +4,15 @@ import java.util.List;
 
 import edu.abcd.smartphone.data_source.remote.body.LoginBody;
 import edu.abcd.smartphone.data_source.remote.body.RegisterBody;
+import edu.abcd.smartphone.data_source.remote.response.CategoryRespose;
 import edu.abcd.smartphone.data_source.remote.response.LoginAccountRespose;
+import edu.abcd.smartphone.data_source.remote.response.ProductRespose;
 import edu.abcd.smartphone.data_source.remote.response.RegisterAccountResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface DataServiceClient {
@@ -22,4 +25,10 @@ public interface DataServiceClient {
 
     @POST("auth/login")
     Call<LoginAccountRespose> login(@Body LoginBody loginBody);
+
+    @GET("category")
+    Call<List<CategoryRespose>> category();
+
+    @GET("products")
+    Call<List<ProductRespose>> product();
 }

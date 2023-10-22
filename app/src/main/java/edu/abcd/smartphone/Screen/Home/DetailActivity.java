@@ -1,21 +1,19 @@
 package edu.abcd.smartphone.Screen.Home;
 
-
-
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+
+import dagger.hilt.android.AndroidEntryPoint;
 import edu.abcd.smartphone.Model.Product;
 import edu.abcd.smartphone.R;
 
+@AndroidEntryPoint
 public class DetailActivity extends AppCompatActivity {
     private Button addToCartBtn;
     private TextView titleTxt, feeTxt, descriptionTxt, reviewTxt, scoreTxt;
