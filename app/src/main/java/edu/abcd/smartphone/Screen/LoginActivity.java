@@ -6,6 +6,9 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import javax.inject.Inject;
@@ -31,27 +34,51 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.btnLogin.setOnClickListener(v -> {
-            initViewModel();
+            String pass = binding.edtPassword.getText().toString().trim();
+            String username = binding.edtEmail.getText().toString().trim();
+            initViewModel(pass, username);
         });
         binding.llRegister.setOnClickListener(v -> {
             startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
         });
     }
 
-    public void initViewModel(){
-        //chưa xét ngoại lệ đăng nhập và chưa post từ giao diện
-        LoginViewModel loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
-        loginViewModel.getLiveData().observe(this, new Observer<LoginAccountRespose>() {
-            @Override
-            public void onChanged(LoginAccountRespose loginAccountRespose) {
-                if(loginAccountRespose !=null){
-                    Toast.makeText(LoginActivity.this, "Email: " + loginAccountRespose.getEmail(), Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                }else{
-                    Toast.makeText(LoginActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+    public void initViewModel(String pass, String username) {
+        if (checkIsEmpty(pass, username)) {
+            LoginViewModel loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+            loginViewModel.getLiveData().observe(this, new Observer<LoginAccountRespose>() {
+                @Override
+                public void onChanged(LoginAccountRespose loginAccountRespose) {
+                    if (loginAccountRespose != null) {
+                        notificationLogin("Email: " + loginAccountRespose.getEmail());
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    } else {
+                        notificationLogin("Check lai email va pass!");
+                    }
                 }
-            }
-        });
-        loginViewModel.loginAPI();
+            });
+            loginViewModel.loginAPI(pass, username);
+        }
     }
+
+    public boolean checkIsEmpty(String pass, String username) {
+        if (TextUtils.isEmpty(username)) {
+            notificationLogin("Username is empty!");
+            return false;
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(username).matches()) {
+            notificationLogin("Invalid email format!");
+            return false;
+        }else if (TextUtils.isEmpty(pass)) {
+            notificationLogin("Password is empty!");
+            return false;
+        }
+
+        // If all checks pass, return true
+        return true;
+    }
+
+    public void notificationLogin(String notification){
+        Toast.makeText(LoginActivity.this, notification, Toast.LENGTH_SHORT).show();
+    }
+
 }

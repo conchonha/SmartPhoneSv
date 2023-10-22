@@ -29,8 +29,8 @@ public class LoginViewModel extends ViewModel {
         return liveData;
     }
 
-    public void loginAPI(){
+    public void loginAPI(String pass, String email){
         LoginRepository loginRepository = new LoginRepository(dataServiceClient);
-        loginRepository.loginAPI("123456","xuanqn01@gmail.com", liveData);
+        loginRepository.loginAPI(pass, email, liveData);
     }
 }
