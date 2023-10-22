@@ -21,20 +21,20 @@
         />
 
     <EditText
+        android:id="@+id/edtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your email"
-        android:layout_marginTop="20dp"
         android:layout_below="@+id/imageView"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
-        android:id="@+id/edtEmail"
-        android:padding="5dp"
-        android:inputType="textEmailAddress"
         android:background="@drawable/bgedt"
         android:drawableEnd="@drawable/mail"
         android:fontFamily="@font/montserrat_alternates_light"
-        />
+        android:hint="Enter your email"
+        android:inputType="textEmailAddress"
+        android:padding="5dp" />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

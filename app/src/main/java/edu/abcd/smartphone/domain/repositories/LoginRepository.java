@@ -22,7 +22,7 @@ public class LoginRepository {
             public void onResponse(Call<LoginAccountRespose> call, Response<LoginAccountRespose> response) {
                 if(response.isSuccessful()){
                     liveData.postValue(response.body());
-                    Log.e("Retrofit", "Succ API call");
+                    Log.e("Retrofit", "Succ to make API call");
                 }else {
                     liveData.postValue(null);
                 }
