@@ -8,7 +8,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -87,12 +87,14 @@
 
                     <TextView
                         android:id="@+id/titleTxt"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
                         android:layout_weight="1"
+                        android:ellipsize="end"
                         android:text="Title"
                         android:textColor="@color/black"
-                        android:textSize="23dp"
+                        android:textSize="23sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -111,10 +113,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:orientation="horizontal"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:gravity="center_vertical"
                 android:layout_marginBottom="16dp"
+                android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="parent">
 
                 <ImageView
@@ -125,59 +128,70 @@
 
                 <TextView
                     android:id="@+id/scoreTxt"
-                    android:layout_marginStart="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:text="4.0"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Rating"
                     android:layout_marginStart="8dp"
-                    android:textColor="@color/black"/>
+                    android:text="Rating"
+                    android:textColor="@color/black" />
 
                 <ImageView
                     android:id="@+id/imageView13"
                     android:layout_width="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:src="@drawable/review" />
 
                 <TextView
                     android:id="@+id/reviewTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:text="10"
                     android:textColor="@color/black"
-                    android:layout_marginStart="8dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:text="Reviews"
-                    android:textColor="@color/black"
-                    android:layout_marginStart="8dp"/>
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/ivlike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_favorite_none"
+                    android:layout_marginStart="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Like"
+                    android:textColor="@color/black" />
             </LinearLayout>
 
             <View
                 android:id="@+id/view3"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/grey"/>
+                android:background="@color/grey" />
 
             <TextView
                 android:id="@+id/descriptionTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:textColor="@color/black"
-                android:textSize="16dp"
                 android:text="Immerse yourself in a world of vibrant visuals and
  immersive sound with the VisionX Pro LED TV.
  Its cutting-edge LED technology brings every
@@ -188,19 +202,21 @@
 With its sleek, modern design, the VisionX Pro is
  not just a TV, but a centerpiece for your
 entertainment space. The ultra-slim bezel and
- premium finish blend seamlessly with any decor" />
+ premium finish blend seamlessly with any decor"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/addToCartBtn"
                 style="@android:style/Widget.Button"
-                android:layout_margin="16dp"
-                android:background="@drawable/green_btn"
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
+                android:layout_margin="16dp"
+                android:background="@drawable/green_btn"
                 android:text="Buy now"
                 android:textColor="@color/white"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
         </LinearLayout>
     </ScrollView>

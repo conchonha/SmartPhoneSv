@@ -1,4 +1,4 @@
-package edu.abcd.smartphone.Adapter;
+package edu.abcd.smartphone.Screen.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

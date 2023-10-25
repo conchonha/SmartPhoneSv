@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_doash_board"
+    app:startDestination="@id/fragmentHome">
+
+    <fragment
+        android:id="@+id/fragmentHome"
+        android:name="edu.abcd.smartphone.Screen.fragment.FragmentHome"
+        android:label="FragmentHome"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/fragmentWishlist"
+        android:name="edu.abcd.smartphone.Screen.fragment.FragmentWashList"
+        android:label="FragmentWashList"
+        tools:layout="@layout/fragment_washlist" />
+
+    <fragment
+        android:id="@+id/fragmentSetting"
+        android:name="edu.abcd.smartphone.Screen.fragment.account.FragmentSetting"
+        android:label="FragmentSetting"
+        tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/fragmentWebView"
+        android:name="edu.abcd.smartphone.Screen.fragment.FragmentWebView"
+        android:label="FragmentWebView"
+        tools:layout="@layout/fragment_webview" />
+    <fragment
+        android:id="@+id/fragmentProfile"
+        android:name="edu.abcd.smartphone.Screen.fragment.account.FragmentProfile"
+        android:label="FragmentProfile"
+        tools:layout="@layout/fragment_account" />
+
+</navigation>

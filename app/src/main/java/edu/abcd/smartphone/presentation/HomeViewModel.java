@@ -18,8 +18,12 @@ public class HomeViewModel extends ViewModel {
     @Inject
     public DataServiceClient dataServiceClient;
 
+    @Inject
+    public HomeRepository homeRepository;
+
     MutableLiveData<List<CategoryRespose>> liveDataCategory;
     MutableLiveData<List<ProductRespose>> liveDataProduct;
+
     @Inject
     public HomeViewModel(){
         liveDataCategory = new MutableLiveData();
@@ -33,12 +37,14 @@ public class HomeViewModel extends ViewModel {
     public MutableLiveData<List<ProductRespose>> getLiveDataProduct(){return liveDataProduct;}
 
     public void categoryAPI(){
-        HomeRepository homeRepository = new HomeRepository(dataServiceClient);
         homeRepository.categoryAPI(liveDataCategory);
     }
 
     public void productAPI(){
-        HomeRepository homeRepository = new HomeRepository(dataServiceClient);
         homeRepository.productAPI(liveDataProduct);
+    }
+
+    public void getProductListFromIdCategory(int id) {
+        homeRepository.getProductListFromIdCategory(id,liveDataProduct);
     }
 }

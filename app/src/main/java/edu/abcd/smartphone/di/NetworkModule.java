@@ -24,7 +24,11 @@ import javax.inject.Singleton;
 @InstallIn(SingletonComponent.class)
  public class NetworkModule {
 
-    Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+    @Singleton
+    @Provides
+    public Gson providerGson(){
+        return new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+    }
     @Provides
     @Singleton
     public OkHttpClient providerOkhttpClient(){
@@ -33,10 +37,10 @@ import javax.inject.Singleton;
 
     @Provides
     @Singleton
-    public Retrofit providerRetrofit(OkHttpClient okHttpClient){
+    public Retrofit providerRetrofit(OkHttpClient okHttpClient, Gson gson){
         return new Retrofit
                 .Builder()
-                .baseUrl("http://192.168.1.9:8112/core/api/v1/") //Đổi đc ipconfig: 192.168.1.9, chạy "java -jar" tại terminal
+                .baseUrl("") //Đổi đc ipconfig: 192.168.1.9, chạy "java -jar" tại terminal
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(okHttpClient)
                 .build();

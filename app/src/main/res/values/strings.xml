@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">SmartPhone</string>
+    <string name="lbl_notification">Notification</string>
+    <string name="overview">Tổng quan</string>
+    <string name="notification">Thông báo</string>
+    <string name="display">Hiển thị</string>
+    <string name="default_system">Mặc định hệ thống</string>
+    <string name="language">Ngôn ngữ</string>
+    <string name="vietnam">Việt nam</string>
+    <string name="remove_cache">Xóa bộ nhớ cache</string>
+    <string name="hotline">Đường dây nóng</string>
+    <string name="hotline_phone">0366426402</string>
+    <string name="other">Khác</string>
+    <string name="version">Phiên bản</string>
+    <string name="share">Chia xẽ</string>
+    <string name="privacy">Bảo mật</string>
+    <string name="url_image">https://firebasestorage.googleapis.com/v0/b/smartphone-38f55.appspot.com/o/%s?alt=media</string>
 </resources>

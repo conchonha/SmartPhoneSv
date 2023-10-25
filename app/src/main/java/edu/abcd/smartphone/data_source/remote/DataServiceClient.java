@@ -14,6 +14,8 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface DataServiceClient {
 //    @FormUrlEncoded
@@ -31,4 +33,7 @@ public interface DataServiceClient {
 
     @GET("products")
     Call<List<ProductRespose>> product();
+
+    @GET("products/getByCate")
+    Call<List<ProductRespose>> productFromIdCategory(@Query("id") int id);
 }

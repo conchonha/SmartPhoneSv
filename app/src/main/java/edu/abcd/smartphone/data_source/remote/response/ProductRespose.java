@@ -2,13 +2,16 @@ package edu.abcd.smartphone.data_source.remote.response;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ProductRespose {
+import java.io.Serializable;
+
+public class ProductRespose implements Serializable {
     @SerializedName("id")
-    public String id;
+    public int id;
+
     @SerializedName("name")
     public String name;
     @SerializedName("price")
-    public int price;
+    public double price;
     @SerializedName("description")
     public String description;
     @SerializedName("image")
@@ -16,9 +19,9 @@ public class ProductRespose {
     @SerializedName("quantity")
     public int quantity;
     @SerializedName("enable")
-    public int enable;
+    public boolean enable;
     @SerializedName("categories")
-    public String categories;
+    public CategoryRespose categories;
     private double score;
 
     public double getScore() {
@@ -29,11 +32,11 @@ public class ProductRespose {
         this.score = score;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -45,7 +48,7 @@ public class ProductRespose {
         this.name = name;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -77,19 +80,19 @@ public class ProductRespose {
         this.quantity = quantity;
     }
 
-    public int getEnable() {
+    public boolean getEnable() {
         return enable;
     }
 
-    public void setEnable(int enable) {
+    public void setEnable(boolean enable) {
         this.enable = enable;
     }
 
-    public String getCategories() {
+    public CategoryRespose getCategories() {
         return categories;
     }
 
-    public void setCategories(String categories) {
+    public void setCategories(CategoryRespose categories) {
         this.categories = categories;
     }
 }

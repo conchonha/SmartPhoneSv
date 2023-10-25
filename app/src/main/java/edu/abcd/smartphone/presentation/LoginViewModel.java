@@ -1,11 +1,16 @@
 package edu.abcd.smartphone.presentation;
 
+import static edu.abcd.smartphone.utils.Const.IS_SAVE_PASS;
+
 import android.app.Application;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import android.util.Patterns;
+import android.widget.CheckBox;
+import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -19,9 +24,19 @@ public class LoginViewModel extends ViewModel {
     @Inject
     public DataServiceClient dataServiceClient;
 
-    MutableLiveData<LoginAccountRespose> liveData;
     @Inject
-    public LoginViewModel(){
+    public Application application;
+
+    @Inject
+    public LoginRepository loginRepository;
+
+    @Inject
+    public SharedPreferences.Editor editor;
+
+    MutableLiveData<LoginAccountRespose> liveData;
+
+    @Inject
+    public LoginViewModel() {
         liveData = new MutableLiveData();
     }
 
@@ -29,8 +44,33 @@ public class LoginViewModel extends ViewModel {
         return liveData;
     }
 
-    public void loginAPI(String pass, String email){
-        LoginRepository loginRepository = new LoginRepository(dataServiceClient);
-        loginRepository.loginAPI(pass, email, liveData);
+    public void loginAPI(String pass, String email) {
+        if (checkIsEmpty(pass, email)) {
+            loginRepository.loginAPI(pass, email, liveData);
+        }
+    }
+
+    public boolean checkIsEmpty(String pass, String username) {
+        if (TextUtils.isEmpty(username)) {
+            showToast("Username is empty!");
+            return false;
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(username).matches()) {
+            showToast("Invalid email format!");
+            return false;
+        } else if (TextUtils.isEmpty(pass)) {
+            showToast("Password is empty!");
+            return false;
+        }
+
+        // If all checks pass, return true
+        return true;
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(application, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public void checkSavePass(Boolean isSavePass) {
+        editor.putBoolean(IS_SAVE_PASS, isSavePass).commit();
     }
 }

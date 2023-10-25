@@ -1,4 +1,6 @@
-package edu.abcd.smartphone.Adapter;
+package edu.abcd.smartphone.Screen.Adapter;
+
+import static edu.abcd.smartphone.utils.Const.getUrlImage;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,19 +16,22 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import javax.inject.Inject;
 
-import dagger.hilt.android.HiltAndroidApp;
 import edu.abcd.smartphone.R;
 import edu.abcd.smartphone.data_source.remote.response.CategoryRespose;
+import edu.abcd.smartphone.presentation.HomeViewModel;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Viewholder> {
-    ArrayList<CategoryRespose> items;
+    List<CategoryRespose> items = new ArrayList<>();
     Context context;
+    HomeViewModel homeViewModel;
 
-    public CategoryAdapter(ArrayList<CategoryRespose> items) {
+    public void updateList(List<CategoryRespose> items, HomeViewModel vm) {
         this.items = items;
+        this.homeViewModel = vm;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -39,20 +44,17 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Viewho
 
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
-        holder.txtTitle.setText(items.get(position).getCategory_name());
+        CategoryRespose categoryRespose = items.get(position);
+        holder.txtTitle.setText(categoryRespose.getCategory_name());
 
-        int drawableResourceId = holder.itemView.getResources().getIdentifier(items.get(position).getImage(),
-                "drawable", holder.itemView.getContext().getPackageName());
         Glide.with(holder.itemView.getContext())
-                .load(drawableResourceId)
+                .load(getUrlImage(categoryRespose.image))
                 .transform(new GranularRoundedCorners(30, 30, 0, 0))
                 .into(holder.pic);
 
-//        holder.itemView.setOnClickListener(v -> {
-//            Intent intent=new Intent(holder.itemView.getContext(), DetailActivity.class);
-//            intent.putExtra("object",items.get(position));
-//            holder.itemView.getContext().startActivity(intent);
-//        });
+        holder.itemView.setOnClickListener(v -> {
+            homeViewModel.getProductListFromIdCategory(categoryRespose.id);
+        });
     }
 
     @Override

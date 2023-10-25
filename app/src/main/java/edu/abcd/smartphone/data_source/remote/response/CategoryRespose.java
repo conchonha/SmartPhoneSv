@@ -2,7 +2,9 @@ package edu.abcd.smartphone.data_source.remote.response;
 
 import com.google.gson.annotations.SerializedName;
 
-public class CategoryRespose {
+import java.io.Serializable;
+
+public class CategoryRespose implements Serializable {
     @SerializedName("id")
     public int id;
     @SerializedName("image")
@@ -10,13 +12,13 @@ public class CategoryRespose {
     @SerializedName("description")
     public String description;
     @SerializedName("enable")
-    public int enable;
+    public boolean enable;
     @SerializedName("category_name")
     public String category_name;
     @SerializedName("parent_id")
-    public String parent_id;
+    public int parent_id;
 
-    public CategoryRespose(int id, String image, String description, int enable, String category_name, String parent_id) {
+    public CategoryRespose(int id, String image, String description, boolean enable, String category_name, int parent_id) {
         this.id = id;
         this.image = image;
         this.description = description;
@@ -49,11 +51,11 @@ public class CategoryRespose {
         this.id = id;
     }
 
-    public int getEnable() {
+    public boolean getEnable() {
         return enable;
     }
 
-    public void setEnable(int enable) {
+    public void setEnable(boolean enable) {
         this.enable = enable;
     }
 
@@ -65,11 +67,11 @@ public class CategoryRespose {
         this.category_name = category_name;
     }
 
-    public String getParent_id() {
+    public int getParent_id() {
         return parent_id;
     }
 
-    public void setParent_id(String parent_id) {
+    public void setParent_id(int parent_id) {
         this.parent_id = parent_id;
     }
 }

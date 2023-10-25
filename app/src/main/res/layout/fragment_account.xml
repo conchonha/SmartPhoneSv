@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@drawable/background"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_account"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/tvName"
+                style="@style/TextTitle"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                tools:text = "Developer"/>
+
+            <TextView
+                android:id="@+id/tvEmail"
+                style="@style/TextContent"
+                android:textColor="#70DEBDBD"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:text="developer@gmail.com"/>
+
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="-30dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="2dp"
+            app:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <include
+                    android:id="@+id/rowSetting"
+                    layout="@layout/layout_row_account"
+                    app:iconLeft='@{@drawable/ic_setting}'
+                    app:title='@{"Setting"}' />
+
+                <include
+                    android:id="@+id/rowPolicy"
+                    layout="@layout/layout_row_account"
+                    app:iconLeft='@{@drawable/ic_policy}'
+                    app:title='@{"Policy"}' />
+
+                <include
+                    android:id="@+id/rowShareApp"
+                    layout="@layout/layout_row_account"
+                    app:iconLeft='@{@drawable/ic_share}'
+                    app:title='@{"ShareApp"}' />
+
+                <include
+                    android:id="@+id/rowClearCache"
+                    layout="@layout/layout_row_account"
+                    app:iconLeft='@{@drawable/ic_clear}'
+                    app:title='@{"Clear Cache"}' />
+
+
+                <include
+                    android:id="@+id/rowLogout"
+                    layout="@layout/layout_row_account"
+                    app:iconLeft='@{@drawable/ic_logout}'
+                    app:title='@{"Logout"}' />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="data"
+            type="edu.abcd.smartphone.domain.model.SettingDisplay" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="25dp"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:focusable="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:paddingVertical="5dp"
+            android:text="@{data.title}"
+            android:textColor="@{ContextCompat.getColor(context,data.color)}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:drawablePadding="10dp"
+            tools:text="Tổng quan"
+            />
+
+        <TextView
+            android:id="@+id/txtContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#777777"
+            android:layout_marginTop="5dp"
+            android:text='@{data.content}'
+            android:visibility='@{data.content.isEmpty()? View.GONE : View.VISIBLE,default = visible}'
+            app:layout_constraintLeft_toLeftOf="@+id/txtTitle"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+            tools:text="Tổng quan"
+            />
+
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#C4CDE0"
+            android:layout_marginTop="30dp"
+            android:visibility="@{data.isLine? View.VISIBLE : View.GONE,default = gone}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtContent" />
+
+        <Switch
+            android:id="@+id/swipe"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_margin="0dp"
+            android:checked="@{data.isChecked}"
+            android:padding="0dp"
+            android:visibility="@{data.isSwipe? View.VISIBLE : View.GONE,default = gone}"
+            app:layout_constraintBottom_toBottomOf="@+id/txtTitle"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txtTitle"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
